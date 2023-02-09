@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <button class="btn">Click here to Change Grid</button>
+    <div class="container">
+    </div>
+    <script>
+        const container = document.querySelector(".container");
+        const btn = document.querySelector(".btn")
+
+        for (let i = 0; i < 16 * 16; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        container.appendChild(square);
+        }
+
+        const squares = document.querySelectorAll('.square');
+
+        squares.forEach(square => {
+            square.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = 'red';
+            });
+        });
+
+        btn.addEventListener('click', function() {
+            let num = prompt("Enter number of squares: ");
+            num = Math.min(100, num);
+
+            container.innerHTML = ""; /*making container div empty*/
+
+            for (let i = 0; i < (num * num); i++){
+                let square1 = document.createElement("div");
+                square1.classList.add("square1");
+                container.appendChild(square1);
+            }
+
+            container.style.display = "flex";
+            container.style.flexWrap = "wrap";
+
+            const squares1 = document.querySelectorAll(".square1");
+            squares1.forEach(square1 => {
+                square1.style.width = `${500 / num}px`;
+                square1.style.height = `${500 / num}px`;
+            });
+        })
+
+    </script>
+  </body>
+</html>
